@@ -10,35 +10,33 @@ let getAuthors (collection : IMongoCollection<Author>) =
         collection.Find(Builders.Filter.Empty).ToEnumerable() |> Seq.toArray
     authors
 
-let getBookById (collection : IMongoCollection<Author>, authorId : ObjectId) =
+let getAuthorById (collection : IMongoCollection<Author>, authorId : ObjectId) =
     let filter = Builders<Author>.Filter.Where(fun x -> x.Id = authorId)
     let author =
         collection.Find(filter).ToEnumerable() |> Seq.head
     author
 
 let addAuthor (collection : IMongoCollection<Author>,
-                           input : CreateBookRequest) =
+                           input : CreateAuthorRequest) =
     let id = ObjectId.GenerateNewId()
 
     let value =
         { Author.Id = id
-          Name = input.
-          Author = input.Author 
-          Genre = input.Genre}
+          Name = input.Name
+        }
     value |> collection.InsertOne
 
-let deleteBook (collection : IMongoCollection<Book>,
+let deleteAuthor (collection : IMongoCollection<Author>,
                            bookId : ObjectId) =
     collection.DeleteOne(fun x -> x.Id = bookId)
 
-let editBook (collection : IMongoCollection<Book>,
-                         input : UpdateBookRequest) =
+let editAuthor (collection : IMongoCollection<Author>,
+                         input : UpdateAuthorRequest) =
     let filter =
-        Builders<Book>
+        Builders<Author>
             .Filter.Eq((fun x -> x.Id), input.Id |> ObjectId.Parse)
     let update =
-        Builders<Book>
-            .Update.Set((fun x -> x.Title), input.Title)
-            .Set((fun x -> x.Author), input.Author)
-            .Set((fun x -> x.Genre), input.Genre)
+        Builders<Author>
+            .Update.Set((fun x -> x.Name), input.Name)
+            
     collection.UpdateOne(filter, update) |> ignore   

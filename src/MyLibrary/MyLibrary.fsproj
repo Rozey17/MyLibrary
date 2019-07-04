@@ -5,7 +5,6 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AuthorRouter.fs" />
     <Compile Include="Domain.fs" />
     <Compile Include="Config.fs" />
     <Compile Include="RequestModel.fs" />
@@ -16,6 +15,8 @@
     <Compile Include="AuthorRepository.fs" />
 
     <Compile Include="AuthorsHandler.fs" />
+
+    <Compile Include="AuthorRouter.fs" />
 
     <Compile Include="BookRouter.fs" />
 

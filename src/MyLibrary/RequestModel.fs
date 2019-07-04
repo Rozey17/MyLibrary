@@ -26,4 +26,21 @@ type UpdateBookRequest =
         else None
 
     
+type CreateAuthorRequest =
+   {
+        Name: string             
+   }
+    member this.HasErrors =
+        if this.Name = null || this.Name = "" then Some "Name is required"
+        else if this.Name.Length > 255  then Some "Author is too long"        
+        else None
 
+type UpdateAuthorRequest = 
+ { 
+    Id : string
+    Name: string 
+ }
+    member this.HasErrors =
+        if this.Name = null || this.Name = "" then Some "Name is required"
+        else if this.Name.Length > 255  then Some"Author is too long"
+        else None

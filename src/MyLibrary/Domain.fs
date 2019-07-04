@@ -11,6 +11,5 @@ type Book = {
 
 type Author = {
     Id: ObjectId
-    Name:string
-    Books : Book list
+    Name:string   
 }

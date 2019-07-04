@@ -1,5 +1,6 @@
 module Router
 
+open AuthorRouter
 open BookRouter
 open Saturn
 open Giraffe

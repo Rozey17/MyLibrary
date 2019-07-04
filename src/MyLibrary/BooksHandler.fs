@@ -70,4 +70,3 @@ let editBookHandler (bookId : string) : HttpHandler =
                         }
         }
 
-AuthiorsHan
