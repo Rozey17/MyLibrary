@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AuthorRouter.fs" />
+    <Compile Include="Domain.fs" />
+    <Compile Include="Config.fs" />
+    <Compile Include="RequestModel.fs" />
+    <Compile Include="BookRepository.fs" />
+
+    <Compile Include="BooksHandler.fs" />
+
+    <Compile Include="AuthorRepository.fs" />
+
+    <Compile Include="AuthorsHandler.fs" />
+
+    <Compile Include="BookRouter.fs" />
+
+    <Compile Include="Router.fs" />
+    <Compile Include="Program.fs" />
+
+    <Content Include="static\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="*.sqlite">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Templates\**" />
+    <EmbeddedResource Remove="Templates\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MongoDB.Driver" Version="2.8.1" />
+  </ItemGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>
