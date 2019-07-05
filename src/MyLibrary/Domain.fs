@@ -5,7 +5,7 @@ open MongoDB.Bson
 type Book = {
     Id : ObjectId
     Title: string
-    Author: string
+    AuthorId: ObjectId
     Genre: string
 }
 

@@ -15,7 +15,7 @@ let getAuthorsHandler (next:HttpFunc) (ctx:HttpContext) =
 let createAuthorHandler (next:HttpFunc) (ctx:HttpContext) =
     task {
         let! input = ctx.BindJsonAsync<CreateAuthorRequest>()
-        let message = "Author" + input.Name + " created succesfully."
+        let message = "Author " + input.Name + " created successfully."
         (authorCollection, input) |> addAuthor
-        return! Successful.OK (message) next ctx
+        return! Successful.OK ( message ) next ctx
     }

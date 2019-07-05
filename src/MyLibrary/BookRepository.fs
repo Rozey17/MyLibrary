@@ -23,7 +23,7 @@ let addBook (collection : IMongoCollection<Book>,
     let value =
         { Book.Id = id
           Title= input.Title
-          Author = input.Author 
+          AuthorId = input.AuthorId |> ObjectId.Parse
           Genre = input.Genre}
     value |> collection.InsertOne
 
@@ -39,6 +39,6 @@ let editBook (collection : IMongoCollection<Book>,
     let update =
         Builders<Book>
             .Update.Set((fun x -> x.Title), input.Title)
-            .Set((fun x -> x.Author), input.Author)
+            .Set((fun x -> x.AuthorId), input.AuthorId |> ObjectId.Parse)
             .Set((fun x -> x.Genre), input.Genre)
     collection.UpdateOne(filter, update) |> ignore                          
